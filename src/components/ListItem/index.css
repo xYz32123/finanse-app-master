@@ -1,0 +1,106 @@
+.list_item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item_label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.item_description,
+.item_value,
+.item_category,
+.item_subcategory,
+.item_date {
+    margin: 0;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.item_value--income {
+    color: green;
+}
+
+.item_value--expense {
+    color: red;
+}
+
+.item_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.item_button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.item_button--edit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.item_button--delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.item_buttons {
+    display: flex;
+    margin-left: 1rem;
+}
+
+.item_button {
+    height: 5rem;
+    width: 5rem;
+    background-color: var(--blue--color);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.item_button--edit {
+    
+    background-image: url('../../assets/Icons/edit.svg');
+}
+
+.item_button--delete {
+    background-image: url('../../assets/Icons/delete_forever.svg');
+}
+
+.item_button--edit, .item_button--delete {
+    display: inline-block !important;
+    height: 5rem;
+    width: 5rem;
+    background-color: var(--blue--color);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border: none;
+    cursor: pointer;
+}
+
+
+.list_item:hover {
+    background-color: var(--blue-color);
+}
+
+
+.list_item:hover .item_buttons {
+    opacity: 1; 
+    background-color: none;
+    transform: translateX(0);
+}
+
+button:hover {
+    background-color: transparent;
+}
