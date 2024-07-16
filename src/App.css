@@ -9,7 +9,6 @@
   --balance-background-color: #cfd9df;
 }
 
-
 *,
 *::after,
 *::before {
@@ -23,8 +22,8 @@ html {
 }
 
 body {
-font-family: 'Poetsen One', sans-serif; 
-box-sizing: border-box;
+  font-family: "Poetsen One", sans-serif;
+  box-sizing: border-box;
 }
 
 .header {
@@ -41,12 +40,10 @@ box-sizing: border-box;
   align-items: center;
 }
 .header_heading {
-  font-size:  3.6rem;
+  font-size: 3.6rem;
   margin: 0 auto;
   padding: 0.5rem;
 }
-
-
 
 @keyframes logo-spin {
   from {
@@ -62,4 +59,3 @@ box-sizing: border-box;
     animation: logo-spin infinite 20s linear;
   }
 }
-

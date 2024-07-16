@@ -1,34 +1,34 @@
 import { useState, useEffect } from "react";
 import "./index.css";
 
-const AddExpense = ({
-  setExpenses,
-  expenses,
-  editedExpense,
-  setEditedExpense,
+const AddTransaction = ({
+  setTransaction,
+  transactions,
+  editedTransaction,
+  setEditedTransaction,
 }) => {
   const [description, setDescription] = useState(
-    editedExpense?.description || ""
+    editedTransaction?.description || ""
   );
-  const [value, setValue] = useState(editedExpense?.price || "");
-  const [category, setCategory] = useState(editedExpense?.category || "");
+  const [value, setValue] = useState(editedTransaction?.price || "");
+  const [category, setCategory] = useState(editedTransaction?.category || "");
   const [subcategory, setSubcategory] = useState(
-    editedExpense?.subcategory || ""
+    editedTransaction?.subcategory || ""
   );
-  const [date, setDate] = useState(editedExpense?.date || "");
+  const [date, setDate] = useState(editedTransaction?.date || "");
   const [isSwitcherChecked, setIsSwitcherChecked] = useState(
-    editedExpense?.date ? true : false
+    editedTransaction?.date ? true : false
   );
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setDescription(editedExpense?.description || "");
-    setValue(editedExpense?.price || "");
-    setCategory(editedExpense?.category || "");
-    setSubcategory(editedExpense?.subcategory || "");
-    setDate(editedExpense?.date || "");
-    setIsSwitcherChecked(editedExpense?.date ? true : false);
-  }, [editedExpense]);
+    setDescription(editedTransaction?.description || "");
+    setValue(editedTransaction?.price || "");
+    setCategory(editedTransaction?.category || "");
+    setSubcategory(editedTransaction?.subcategory || "");
+    setDate(editedTransaction?.date || "");
+    setIsSwitcherChecked(editedTransaction?.date ? true : false);
+  }, [editedTransaction]);
 
   const handleDescriptionChange = (e) => setDescription(e.target.value);
   const handleValueChange = (e) => setValue(e.target.value);
@@ -53,14 +53,14 @@ const AddExpense = ({
       isPositive: !isSwitcherChecked,
     };
 
-    setExpenses([...expenses, transaction]);
+    setTransaction([...transactions, transaction]);
     setDescription("");
     setValue("");
     setCategory("");
     setSubcategory("");
     setDate("");
     setError(false);
-    setEditedExpense(null);
+    setEditedTransaction(null);
   };
 
   return (
@@ -71,8 +71,8 @@ const AddExpense = ({
           special chars.
         </div>
       )}
-      <ul className="inputs">
-        <li className="switcher">
+      <div className="inputs">
+        <div className="switcher">
           <input
             type="checkbox"
             name="switcher"
@@ -83,8 +83,8 @@ const AddExpense = ({
             aria-label="Switcher"
           />
           <label htmlFor="switcher" className="switcher_label"></label>
-        </li>
-        <li className="input">
+        </div>
+        <div className="input">
           <input
             type="text"
             name="description"
@@ -97,8 +97,8 @@ const AddExpense = ({
           <label htmlFor="description" className="input_label">
             Description
           </label>
-        </li>
-        <li className="input">
+        </div>
+        <div className="input">
           <input
             type="number"
             name="value"
@@ -112,8 +112,8 @@ const AddExpense = ({
           <label htmlFor="value" className="input_label">
             Value
           </label>
-        </li>
-        <form id="transaction-form">
+        </div>
+        <div id="transaction-div">
           <label htmlFor="category">Category</label>
           <select
             id="category"
@@ -143,8 +143,8 @@ const AddExpense = ({
             value={date}
             onChange={handleDateChange}
           />
-        </form>
-        <li className="inputs_button">
+        </div>
+        <div className="inputs_button">
           <button
             className="button"
             data-enter-button="data-enter-button"
@@ -159,10 +159,10 @@ const AddExpense = ({
               <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
             </svg>
           </button>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
   );
 };
 
-export default AddExpense;
+export default AddTransaction;

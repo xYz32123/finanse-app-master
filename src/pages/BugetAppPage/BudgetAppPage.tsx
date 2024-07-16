@@ -1,49 +1,46 @@
 import React, { useState } from "react";
-import AddExpense from "../../components/AddExpense/AddExpense";
-import { BudgetBalanceExpensesSection } from "../../components/BudgetBalanceExpensesSection/BudgetBalanceExpensesSection";
+import AddTransaction from "../../components/AddTransaction/AddTransaction";
+import { BudgetBalanceTransactionSection } from "../../components/BudgetBalanceTransactionSection/BudgetBalanceTransactionSection";
 const BudgetAppPage = () => {
-    const [editedExpense, setEditedExpense] = useState(null);
-    console.log(editedExpense, "editedExpense");
-    const[expenses, setExpenses] = useState(
-        [
-            {
-              id: "1",
-              isPositive: true,
-              description: "Salary",
-              price: "5000",
-              category: "Income",
-              subcategory: "Job",
-              date: "2023-10-01",
-            },
-            {
-              id: "2",
-              isPositive: false,
-              description: "Groceries",
-              price: "150",
-              category: "Expense",
-              subcategory: "Food",
-              date: "2023-10-02",
-            },
-          ]
-    );
+  const [editedTransaction, setEditedTransaction] = useState(null);
+  console.log(editedTransaction, "editedTransaction");
+  const [transactions, setTransaction] = useState([
+    {
+      id: "1",
+      isPositive: true,
+      description: "Salary",
+      price: "5000",
+      category: "Income",
+      subcategory: "Job",
+      date: "2023-10-01",
+    },
+    {
+      id: "2",
+      isPositive: false,
+      description: "Groceries",
+      price: "150",
+      category: "Expense",
+      subcategory: "Food",
+      date: "2023-10-02",
+    },
+  ]);
 
-
-    return (
-        <div>
-            <AddExpense expenses={expenses} setExpenses = {
-                setExpenses}
-                editedExpense={editedExpense}
-                setEditedExpense={setEditedExpense}
-            />
-            <BudgetBalanceExpensesSection expenses={
-                expenses}
-                editedExpense={editedExpense}
-                setEditedExpense={setEditedExpense}
-            
-            setExpenses={setExpenses}
-            />
-        </div>
-    );
-}
+  return (
+    <div>
+      <AddTransaction
+        transactions={transactions}
+        setTransaction={setTransaction}
+        editedTransaction={editedTransaction}
+        setEditedTransaction={setEditedTransaction}
+      />
+      <BudgetBalanceTransactionSection
+        transactions={transactions}
+        editedTransaction={editedTransaction}
+        setEditedTransaction={setEditedTransaction}
+        setTransaction={setTransaction}
+      />
+    </div>
+  );
+};
 
 export default BudgetAppPage;

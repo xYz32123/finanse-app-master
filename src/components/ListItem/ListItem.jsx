@@ -8,9 +8,9 @@ export const ListItem = ({
   subcategory,
   date,
   formatPrice,
-  setExpenses,
-  expenses,
-  setEditedExpense,
+  setTransaction,
+  transactions,
+  setEditedTransaction,
 }) => {
   return (
     <li className="list_item" id={id}>
@@ -49,7 +49,7 @@ export const ListItem = ({
           data-edit-button
           title="Edit"
           onClick={() => {
-            setEditedExpense({
+            setEditedTransaction({
               id,
               description,
               price,
@@ -64,9 +64,11 @@ export const ListItem = ({
           data-delete-button
           title="Delete"
           onClick={() => {
-            console.log("delete", id, expenses);
-            const newExpenses = expenses.filter((expense) => expense.id !== id);
-            setExpenses(newExpenses);
+            console.log("delete", id, transactions);
+            const newExpenses = transactions.filter(
+              (expense) => expense.id !== id
+            );
+            setTransaction(newExpenses);
           }}
         ></button>
       </div>
