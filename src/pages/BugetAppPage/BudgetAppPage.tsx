@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddTransaction from "../../components/AddTransaction/AddTransaction";
 import { BudgetBalanceTransactionSection } from "../../components/BudgetBalanceTransactionSection/BudgetBalanceTransactionSection";
+import CategoriesPanel from "../../components/CategoriesPanel/CategoriesPanel";
 const BudgetAppPage = () => {
   const [editedTransaction, setEditedTransaction] = useState(null);
   console.log(editedTransaction, "editedTransaction");
@@ -24,6 +25,11 @@ const BudgetAppPage = () => {
       date: "2023-10-02",
     },
   ]);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+
+  const handleSelectSubcategory = (subcategory) => {
+    setSelectedSubcategory(subcategory);
+  };
 
   return (
     <div>
@@ -39,6 +45,7 @@ const BudgetAppPage = () => {
         setEditedTransaction={setEditedTransaction}
         setTransaction={setTransaction}
       />
+      <CategoriesPanel onSelectSubcategory={handleSelectSubcategory} />
     </div>
   );
 };

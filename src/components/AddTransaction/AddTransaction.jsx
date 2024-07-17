@@ -134,6 +134,11 @@ const AddTransaction = ({
             onChange={handleSubcategoryChange}
           >
             <option value="">Select Subcategory</option>
+            <option value="Equipment">Equipment</option>
+            <option value="Transport">Transport</option>
+            <option value="Salaries">Salaries</option>
+            <option value="Projects">Projects</option>
+            <option value="Other">Other</option>
           </select>
           <label htmlFor="date">Date</label>
           <input
