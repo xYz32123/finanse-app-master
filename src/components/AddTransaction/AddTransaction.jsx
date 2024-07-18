@@ -113,41 +113,50 @@ const AddTransaction = ({
             Value
           </label>
         </div>
-        <div id="transaction-div">
-          <label htmlFor="category">Category</label>
-          <select
-            id="category"
-            name="category"
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Select Category</option>
-            <option value="Daily">Daily</option>
-            <option value="Seasonal">Seasonal</option>
-            <option value="Others">Others</option>
-          </select>
-          <label htmlFor="subcategory">Subcategory</label>
-          <select
-            id="subcategory"
-            name="subcategory"
-            value={subcategory}
-            onChange={handleSubcategoryChange}
-          >
-            <option value="">Select Subcategory</option>
-            <option value="Equipment">Equipment</option>
-            <option value="Transport">Transport</option>
-            <option value="Salaries">Salaries</option>
-            <option value="Projects">Projects</option>
-            <option value="Other">Other</option>
-          </select>
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={date}
-            onChange={handleDateChange}
-          />
+        <div id="transaction-form">
+          <h1>
+            <label htmlFor="category" className="input_label"></label>
+            <select
+              id="category"
+              name="category"
+              className="input_input"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option value="">Select Category</option>
+              <option value="Daily">Daily</option>
+              <option value="Seasonal">Seasonal</option>
+              <option value="Others">Others</option>
+            </select>{" "}
+          </h1>
+          <h2>
+            <label htmlFor="subcategory" className="input_label"></label>
+            <select
+              id="subcategory"
+              name="subcategory"
+              className="input_input"
+              value={subcategory}
+              onChange={handleSubcategoryChange}
+            >
+              <option value="">Select Subcategory</option>
+              <option value="Equipment">Equipment</option>
+              <option value="Transport">Transport</option>
+              <option value="Salaries">Salaries</option>
+              <option value="Projects">Projects</option>
+              <option value="Other">Other</option>
+            </select>{" "}
+          </h2>
+          <h3>
+            <label htmlFor="date" className="input_label"></label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="input_input"
+              value={date}
+              onChange={handleDateChange}
+            />{" "}
+          </h3>
         </div>
         <div className="inputs_button">
           <button

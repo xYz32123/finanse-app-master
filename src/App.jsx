@@ -9,10 +9,12 @@ function App() {
     <Router>
       <div>
         <h1>Budget App</h1>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/budget" element={<BudgetAppPage />} />
-        </Routes>
+        <div className="app_layout">
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/budget" element={<BudgetAppPage />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

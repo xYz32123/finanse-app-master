@@ -1,27 +1,30 @@
-.categories {
+.categories-panel {
   padding: 20px;
+  background-color: none;
+  border-right: none;
+  width: 250px;
+  flex-direction: column;
 }
 
-.category-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.category-list li {
-  margin-bottom: 10px;
-}
-
-.category-list button {
-  background-color: #f0f0f0;
+.categories-button,
+.category-button {
+  background-color: #7cd0ea;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   width: 100%;
   text-align: left;
+  display: block;
 }
 
-.category-list button:hover {
+.categories-button:hover,
+.category-button:hover {
   background-color: #e0e0e0;
+}
+
+.category-list {
+  list-style-type: none;
+  padding: 0;
 }
 
 .subcategories {

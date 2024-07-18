@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AddTransaction from "../../components/AddTransaction/AddTransaction";
 import { BudgetBalanceTransactionSection } from "../../components/BudgetBalanceTransactionSection/BudgetBalanceTransactionSection";
 import CategoriesPanel from "../../components/CategoriesPanel/CategoriesPanel";
+import "./index.css";
+import AddTransactionsToCat from "../../components/CategoriesPanel/AddTransactionsToCat.jsx";
 const BudgetAppPage = () => {
   const [editedTransaction, setEditedTransaction] = useState(null);
   console.log(editedTransaction, "editedTransaction");
@@ -31,21 +33,70 @@ const BudgetAppPage = () => {
     setSelectedSubcategory(subcategory);
   };
 
+  //const AddTransactionsToCat = (subcategory, transaction) => {
+  //  setTransactions((prevTransactions) => ({
+  //    ...prevTransactions,
+  //    [subcategory]: [...prevTransactions[subcategory], transaction],
+  //  }));
+  //};
+
+  const handleAddTransaction = (subcategory, transaction) => {
+    setTransactions((prevTransactions) => [
+      ...prevTransactions,
+      { subcategory, description: transaction },
+    ]);
+  };
+
+  //  const renderTransactionsToCat = () => {
+  //    return (
+  //      <div className="transactions">
+  //        <h3>Transactions for {selectedSubcategory}</h3>
+  //        <ul>
+  //          {transactions[selectedSubcategory]?.map((transaction, index) => (
+  //            <li key={index}>{transaction}</li>
+  //          ))}
+  //        </ul>
+  //      </div>
+  //    );
+  //    if (!selectedSubcategory) return null;
+  //  };
+  //};
+
+  const renderTransactionsToCat = () => {
+    const filteredTransactions = transactions.filter(
+      (transaction) => transaction.subcategory === selectedSubcategory
+    );
+    return (
+      <div className="transactions">
+        <h3>Transactions for {selectedSubcategory}</h3>
+        <ul>
+          {transactions[selectedSubcategory]?.map((transaction, index) => (
+            <li key={index}>{transaction}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div>
-      <AddTransaction
-        transactions={transactions}
-        setTransaction={setTransaction}
-        editedTransaction={editedTransaction}
-        setEditedTransaction={setEditedTransaction}
-      />
-      <BudgetBalanceTransactionSection
-        transactions={transactions}
-        editedTransaction={editedTransaction}
-        setEditedTransaction={setEditedTransaction}
-        setTransaction={setTransaction}
-      />
-      <CategoriesPanel onSelectSubcategory={handleSelectSubcategory} />
+      <div>
+        <AddTransaction
+          transactions={transactions}
+          setTransaction={setTransaction}
+          editedTransaction={editedTransaction}
+          setEditedTransaction={setEditedTransaction}
+        />
+        <BudgetBalanceTransactionSection
+          transactions={transactions}
+          editedTransaction={editedTransaction}
+          setEditedTransaction={setEditedTransaction}
+          setTransaction={setTransaction}
+        />
+      </div>
+      <div className="sidebar">
+        <CategoriesPanel onSelectSubcategory={handleSelectSubcategory} />
+      </div>
     </div>
   );
 };

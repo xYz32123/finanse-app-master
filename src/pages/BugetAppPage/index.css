@@ -1,0 +1,14 @@
+.sidebar {
+  flex: 0 0 250px; /* Stała szerokość dla panelu bocznego */
+  margin-left: 2rem;
+  border-right: var(--form--background-color);
+}
+
+.transactions {
+  margin-top: 20px;
+}
+
+.transactions ul {
+  list-style-type: none;
+  padding: 0;
+}
