@@ -1,0 +1,27 @@
+/* Zadanie dopasuj te klasy do twojego stylu opisawania klas */
+.categories-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category-item {
+  margin-bottom: 10px;
+}
+
+.category-name {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.category-name.expanded {
+  color: blue; /* Kolor dla rozwiniętej kategorii */
+}
+
+.subcategories-list {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.subcategory-item {
+  margin-bottom: 5px;
+}
