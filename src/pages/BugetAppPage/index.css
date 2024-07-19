@@ -1,18 +1,50 @@
-.sidebar {
-  flex: 0 0 250px; /* Stała szerokość dla panelu bocznego */
-  margin-left: 2rem;
-  border-right: var(--form--background-color);
-}
-
-.transactions {
-  margin-top: 20px;
-}
-
-.transactions ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.budget_layout {
+.app-container {
   display: flex;
 }
+
+.left-column {
+  flex: 0 1 auto; /* Szerokość kolumny dopasowana do zawartości */
+  margin-right: 20px;
+}
+
+.middle-column {
+  flex: 1; /* Kolumna zajmuje pozostałą szerokość */
+  margin-right: 20px;
+}
+
+.right-column {
+  flex: 0 1 auto; /* Szerokość kolumny dopasowana do zawartości */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.budget_layout {
+  display: flex;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column; /* Ustaw układ kolumnowy */
+  /*align-items: flex-start;
+  margin-left: 2rem;
+  border-right: var(--form--background-color);
+}*

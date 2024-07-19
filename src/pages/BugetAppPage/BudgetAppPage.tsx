@@ -29,11 +29,11 @@ const BudgetAppPage = () => {
   const [filter, setFilter] = useState("");
 
   return (
-    <div className="budget_layout">
-      <div className="sidebar">
+    <div className="app-container">
+      <div className="left-column">
         <CategoriesPanel setFilter={setFilter} />
       </div>
-      <div>
+      <div className="middle-column">
         <AddTransaction
           transactions={transactions}
           setTransaction={setTransaction}
@@ -49,58 +49,11 @@ const BudgetAppPage = () => {
           setFilter={setFilter}
         />
       </div>
+      <div className="right-column">
+        {/*<ChartsPanel /> Dodanie komponentu wykresów*/}
+      </div>
     </div>
   );
 };
 
 export default BudgetAppPage;
-
-//  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-//
-//  const handleSelectSubcategory = (subcategory) => {
-//    setSelectedSubcategory(subcategory);
-
-//const AddTransactionsToCat = (subcategory, transaction) => {
-//  setTransactions((prevTransactions) => ({
-//    ...prevTransactions,
-//    [subcategory]: [...prevTransactions[subcategory], transaction],
-//  }));
-//};
-
-//const handleAddTransaction = (subcategory, transaction) => {
-//  setTransactions((prevTransactions) => [
-//    ...prevTransactions,
-//    { subcategory, description: transaction },
-//  ]);
-//};
-
-//  const renderTransactionsToCat = () => {
-//    return (
-//      <div className="transactions">
-//        <h3>Transactions for {selectedSubcategory}</h3>
-//        <ul>
-//          {transactions[selectedSubcategory]?.map((transaction, index) => (
-//            <li key={index}>{transaction}</li>
-//          ))}
-//        </ul>
-//      </div>
-//    );
-//    if (!selectedSubcategory) return null;
-//  };
-//};
-
-//const renderTransactionsToCat = () => {
-//  const filteredTransactions = transactions.filter(
-//    (transaction) => transaction.subcategory === selectedSubcategory
-//  );
-//  return (
-//    <div className="transactions">
-//      <h3>Transactions for {selectedSubcategory}</h3>
-//      <ul>
-//        {transactions[selectedSubcategory]?.map((transaction, index) => (
-//          <li key={index}>{transaction}</li>
-//        ))}
-//      </ul>
-//    </div>
-//  );
-//};
