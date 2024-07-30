@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./index.css";
+import { postTransaction } from "../../Communication/fetchPost";
+import { updateTransaction } from "../../Communication/fetchPut";
 
 const AddTransaction = ({
   setTransaction,
@@ -44,16 +46,39 @@ const AddTransaction = ({
     }
 
     const transaction = {
-      id: Math.floor(Math.random() * 100000),
       description,
       price: parseFloat(value),
       category,
       subcategory,
       date,
-      isPositive: !isSwitcherChecked,
+      isPositive: !isSwitcherChecked ? 1 : 0,
     };
 
-    setTransaction([...transactions, transaction]);
+    console.log(editedTransaction, "editedTransaction");
+
+    if (editedTransaction?.id) {
+      // Aktualizacja istniejącej transakcji
+      const updatedTransaction = { ...transaction, id: editedTransaction.id };
+      updateTransaction(updatedTransaction);
+
+      console.log(transactions, "transactions");
+
+      // Filtrowanie i aktualizacja stanu transakcji
+      const filteredTransactions = transactions.filter(
+        (t) => t?.id?.toString() !== editedTransaction?.id?.toString()
+      );
+      console.log(filteredTransactions, "Filtrowane", editedTransaction?.id);
+      setTransaction([...filteredTransactions, updatedTransaction]);
+    } else {
+      // Dodanie nowej transakcji
+      setTransaction([...transactions, transaction]);
+      postTransaction(transaction);
+    }
+
+    //postTransaction(transaction);
+    //updateTransaction(editedTransaction);
+    //wywołanie update transaction, wywołać post transaction i update transaction w zaleznosci czy to edycja czy dodawanie nowego item, w fetchpost funckcja update transacion
+
     setDescription("");
     setValue("");
     setCategory("");
@@ -67,7 +92,7 @@ const AddTransaction = ({
     <section className="budget_structure">
       {error && (
         <div className="error">
-          Description can't be empty and value must be a number without any
+          Description can not be empty and value must be a number without any
           special chars.
         </div>
       )}
@@ -113,41 +138,50 @@ const AddTransaction = ({
             Value
           </label>
         </div>
-        <div id="transaction-div">
-          <label htmlFor="category">Category</label>
-          <select
-            id="category"
-            name="category"
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Select Category</option>
-            <option value="Daily">Daily</option>
-            <option value="Seasonal">Seasonal</option>
-            <option value="Others">Others</option>
-          </select>
-          <label htmlFor="subcategory">Subcategory</label>
-          <select
-            id="subcategory"
-            name="subcategory"
-            value={subcategory}
-            onChange={handleSubcategoryChange}
-          >
-            <option value="">Select Subcategory</option>
-            <option value="Equipment">Equipment</option>
-            <option value="Transport">Transport</option>
-            <option value="Salaries">Salaries</option>
-            <option value="Projects">Projects</option>
-            <option value="Other">Other</option>
-          </select>
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={date}
-            onChange={handleDateChange}
-          />
+        <div id="transaction-form">
+          <h1>
+            <label htmlFor="category" className="input_label"></label>
+            <select
+              id="category"
+              name="category"
+              className="input_input"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option value="">Select Category</option>
+              <option value="Daily">Daily</option>
+              <option value="Seasonal">Seasonal</option>
+              <option value="Others">Others</option>
+            </select>{" "}
+          </h1>
+          <h2>
+            <label htmlFor="subcategory" className="input_label"></label>
+            <select
+              id="subcategory"
+              name="subcategory"
+              className="input_input"
+              value={subcategory}
+              onChange={handleSubcategoryChange}
+            >
+              <option value="">Select Subcategory</option>
+              <option value="Equipment">Equipment</option>
+              <option value="Transport">Transport</option>
+              <option value="Salaries">Salaries</option>
+              <option value="Projects">Projects</option>
+              <option value="Other">Other</option>
+            </select>{" "}
+          </h2>
+          <h3>
+            <label htmlFor="date" className="input_label"></label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="input_input"
+              value={date}
+              onChange={handleDateChange}
+            />{" "}
+          </h3>
         </div>
         <div className="inputs_button">
           <button
