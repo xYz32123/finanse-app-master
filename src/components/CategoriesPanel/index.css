@@ -1,7 +1,7 @@
 .categories-panel {
   padding: 20px;
   background-color: #f5f5f5;
-  border-right: 1px solid #ddd;
+  border-right: none;
   width: 250px;
   flex-direction: column;
   list-style-type: none;

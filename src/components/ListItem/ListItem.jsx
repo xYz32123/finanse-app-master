@@ -1,3 +1,5 @@
+import { deleteTransaction } from "../../Communication/fetchDelete";
+//import { updateTransaction } from "../../Communication/fetchPut";
 import "./index.css";
 export const ListItem = ({
   id,
@@ -10,6 +12,7 @@ export const ListItem = ({
   formatPrice,
   setTransaction,
   transactions,
+  //editedTransaction,
   setEditedTransaction,
 }) => {
   return (
@@ -49,6 +52,7 @@ export const ListItem = ({
           data-edit-button
           title="Edit"
           onClick={() => {
+            //updateTransaction();
             setEditedTransaction({
               id,
               description,
@@ -64,10 +68,11 @@ export const ListItem = ({
           data-delete-button
           title="Delete"
           onClick={() => {
-            console.log("delete", id, transactions);
+            deleteTransaction(id);
             const newExpenses = transactions.filter(
-              (expense) => expense.id !== id
+              (expense) => expense.idtransactions !== id
             );
+            console.log(newExpenses, id);
             setTransaction(newExpenses);
           }}
         ></button>

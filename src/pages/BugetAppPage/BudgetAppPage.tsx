@@ -3,30 +3,15 @@ import AddTransaction from "../../components/AddTransaction/AddTransaction";
 import { BudgetBalanceTransactionSection } from "../../components/BudgetBalanceTransactionSection/BudgetBalanceTransactionSection";
 import CategoriesPanel from "../../components/CategoriesPanel/CategoriesPanel";
 import "./index.css";
+import { useFetch } from "../../Communication/Fetch";
+//import { ChartsPanel } from "../../components/ChartsPanel/ChartsPanel";
+
 const BudgetAppPage = () => {
   const [editedTransaction, setEditedTransaction] = useState(null);
-  const [transactions, setTransaction] = useState([
-    {
-      id: "1",
-      isPositive: true,
-      description: "Salary",
-      price: "5000",
-      category: "Daily",
-      subcategory: "Transport",
-      date: "2023-10-01",
-    },
-    {
-      id: "2",
-      isPositive: false,
-      description: "Groceries",
-      price: "150",
-      category: "Seasonal",
-      subcategory: "Projects",
-      date: "2023-10-02",
-    },
-  ]);
 
   const [filter, setFilter] = useState("");
+
+  const { transactions, setTransactions } = useFetch();
 
   return (
     <div className="app-container">
@@ -36,7 +21,7 @@ const BudgetAppPage = () => {
       <div className="middle-column">
         <AddTransaction
           transactions={transactions}
-          setTransaction={setTransaction}
+          setTransaction={setTransactions}
           editedTransaction={editedTransaction}
           setEditedTransaction={setEditedTransaction}
         />
@@ -44,13 +29,15 @@ const BudgetAppPage = () => {
           transactions={transactions}
           editedTransaction={editedTransaction}
           setEditedTransaction={setEditedTransaction}
-          setTransaction={setTransaction}
+          setTransaction={setTransactions}
           filter={filter}
           setFilter={setFilter}
         />
       </div>
       <div className="right-column">
-        {/*<ChartsPanel /> Dodanie komponentu wykresów*/}
+        <h1>Charts</h1>
+        {/*<ChartsPanel />*/}
+        {/*Dodanie komponentu wykresów*/}
       </div>
     </div>
   );

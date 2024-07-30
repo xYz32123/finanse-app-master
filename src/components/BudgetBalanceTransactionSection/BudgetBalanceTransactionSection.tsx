@@ -14,7 +14,6 @@ export const BudgetBalanceTransactionSection = ({
     return isPositive ? `+${price.toFixed(2)}` : `-${price.toFixed(2)} PLN`;
   };
 
-  //wykonać te funkcje dla expenses (filter positive i negative)
   const filterItemsIncomes = (items, filter = null) => {
     return items.filter((item) => {
       if (!item.isPositive) {
@@ -49,11 +48,18 @@ export const BudgetBalanceTransactionSection = ({
             <ul className="list_list">
               {filterItemsIncomes(transactions, filter).map((item) => (
                 <ListItem
-                  key={item.id}
-                  {...item}
+                  key={item.idtransactions}
+                  id={item.idtransactions}
+                  isPositive={item.isPositive}
+                  description={item.description}
+                  price={item.price}
+                  category={item.category}
+                  subcategory={item.subcategory}
+                  date={item.date}
                   formatPrice={formatPrice}
                   transactions={transactions}
                   setTransaction={setTransaction}
+                  editedTransaction={editedTransaction}
                   setEditedTransaction={setEditedTransaction}
                 />
               ))}
@@ -69,8 +75,14 @@ export const BudgetBalanceTransactionSection = ({
             <ul className="list_list">
               {filterItemsExpenses(transactions, filter).map((item) => (
                 <ListItem
-                  key={item.id}
-                  {...item}
+                  key={item.idtransactions}
+                  id={item.idtransactions}
+                  isPositive={item.isPositive}
+                  description={item.description}
+                  price={item.price}
+                  category={item.category}
+                  subcategory={item.subcategory}
+                  date={item.date}
                   formatPrice={formatPrice}
                   transactions={transactions}
                   setTransaction={setTransaction}

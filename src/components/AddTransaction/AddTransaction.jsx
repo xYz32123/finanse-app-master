@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./index.css";
+import { postTransaction } from "../../Communication/fetchPost";
+import { updateTransaction } from "../../Communication/fetchPut";
 
 const AddTransaction = ({
   setTransaction,
@@ -44,16 +46,39 @@ const AddTransaction = ({
     }
 
     const transaction = {
-      id: Math.floor(Math.random() * 100000),
       description,
       price: parseFloat(value),
       category,
       subcategory,
       date,
-      isPositive: !isSwitcherChecked,
+      isPositive: !isSwitcherChecked ? 1 : 0,
     };
 
-    setTransaction([...transactions, transaction]);
+    console.log(editedTransaction, "editedTransaction");
+
+    if (editedTransaction?.id) {
+      // Aktualizacja istniejącej transakcji
+      const updatedTransaction = { ...transaction, id: editedTransaction.id };
+      updateTransaction(updatedTransaction);
+
+      console.log(transactions, "transactions");
+
+      // Filtrowanie i aktualizacja stanu transakcji
+      const filteredTransactions = transactions.filter(
+        (t) => t?.id?.toString() !== editedTransaction?.id?.toString()
+      );
+      console.log(filteredTransactions, "Filtrowane", editedTransaction?.id);
+      setTransaction([...filteredTransactions, updatedTransaction]);
+    } else {
+      // Dodanie nowej transakcji
+      setTransaction([...transactions, transaction]);
+      postTransaction(transaction);
+    }
+
+    //postTransaction(transaction);
+    //updateTransaction(editedTransaction);
+    //wywołanie update transaction, wywołać post transaction i update transaction w zaleznosci czy to edycja czy dodawanie nowego item, w fetchpost funckcja update transacion
+
     setDescription("");
     setValue("");
     setCategory("");
@@ -67,7 +92,7 @@ const AddTransaction = ({
     <section className="budget_structure">
       {error && (
         <div className="error">
-          Description can't be empty and value must be a number without any
+          Description can not be empty and value must be a number without any
           special chars.
         </div>
       )}
